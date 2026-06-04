@@ -13,7 +13,7 @@ function clickToDo(){
 
     const li = document.createElement("li");
     const span = document.createElement("span");
-    span.textContent = text;
+    span.textContent = text.slice(0,20);
     const deletBtn = document.createElement("button")
     deletBtn.textContent = "o'chirish"
     li.append(span)
