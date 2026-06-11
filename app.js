@@ -1,6 +1,7 @@
 const Input = document.getElementById('Input');
 const Btn = document.getElementById('Btn');
 const Ul = document.getElementById('UI');
+const darkBtn = document.getElementById("dark")
 Btn.addEventListener('click',clickToDo)
 
 function clickToDo(){
@@ -27,3 +28,7 @@ function clickToDo(){
         li.remove()
     })
 }
+darkBtn.addEventListener("click",()=>{
+    document.body.classList.toggle("dark")
+    darkBtn.innerText = 'Light'
+})

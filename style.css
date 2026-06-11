@@ -96,3 +96,8 @@ h1{
 #UI button:hover{
     background: darkred;
 }
+.dark{
+    background-color: #121212;
+    color: #5c5c5c;
+    
+}
