@@ -22,4 +22,4 @@ A simple Todo App built with **HTML**, **CSS**, and **JavaScript**. Tasks are sa
 
 ## 👨‍💻 Author
 
-**Asadbek Esonboyev**
+**Luffy**
