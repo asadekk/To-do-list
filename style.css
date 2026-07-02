@@ -80,9 +80,7 @@ h1{
 
 .completed{
     text-decoration: line-through;
-    color: gray;
 }
-
 #UI button{
     border: none;
     background: crimson;

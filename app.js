@@ -2,33 +2,39 @@ const Input = document.getElementById('Input');
 const Btn = document.getElementById('Btn');
 const Ul = document.getElementById('UI');
 const darkBtn = document.getElementById("dark")
-Btn.addEventListener('click',clickToDo)
+Btn.addEventListener('click', clickToDo)
 
-function clickToDo(){
-    const text = Input.value.trim();
+const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-    if(text === ""){
-        alert("Vazifa kiriting")
+function clickToDo() {
+    const text = Input.value.trim()
+    if (!text) {
+        alert("Vazifa kiriting...")
         return;
     }
-
-    const li = document.createElement("li");
-    const span = document.createElement("span");
-    span.textContent = text.slice(0,20);
-    const deletBtn = document.createElement("button")
-    deletBtn.textContent = "o'chirish"
-    li.append(span)
-    li.append(deletBtn)
-    Ul.append(li)
+    todos.push(text)
+    localStorage.setItem('todos', JSON.stringify(todos))
+    renderToDo()
     Input.value = ""
-    span.addEventListener("click", () => {
-    span.classList.toggle("completed");
-    });
-    deletBtn.addEventListener('click',()=>{
-        li.remove()
-    })
+    
 }
-darkBtn.addEventListener("click",()=>{
-    document.body.classList.toggle("dark")
-    darkBtn.innerText = 'Light'
-})
+
+function renderToDo() {
+    Ul.innerHTML = ""
+    todos.forEach((todo, index) => {
+        const li = document.createElement("li")
+        const span = document.createElement("span")
+        const btn = document.createElement("button")
+        btn.textContent = "Delete"
+        span.innerText = todo;
+        li.append(span)
+        li.append(btn)
+        Ul.append(li)
+        btn.addEventListener("click",()=>{
+           todos.splice(index,1)
+           localStorage.setItem("todos",JSON.stringify(todos))
+           renderToDo()
+        })
+    });
+}
+renderToDo()
